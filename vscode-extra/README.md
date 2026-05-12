@@ -1,71 +1,112 @@
-# vscode-extra README
+# vscode-extra
 
-This is the README for your extension "vscode-extra". After writing up a brief description, we recommend including the following sections.
+**AI workspace assistant for vibe coders**
+
+An extension that brings AI-powered assistance directly into your VS Code sidebar using Google's Gemini API.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- **Sidebar AI Chat** — Ask questions and get instant AI responses without leaving your editor.
+- **Gemini Integration** — Powered by Google's `gemini-2.5-flash` model for fast, intelligent responses.
+- **Settings Panel** — Easy one-click access to configure your Gemini API key.
+- **Clean UI** — Simple, distraction-free chat interface that respects VS Code's theme.
+- **API Key Management** — Secure configuration via VS Code settings.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- **VS Code** 1.118.0 or later
+- **Google Gemini API Key** (free or paid tier) — [Get one here](https://makersuite.google.com/app/apikey)
+
+## Installation
+
+1. Install the extension from the VS Code Marketplace (or build locally).
+2. Open VS Code settings (`Cmd+,` on macOS or `Ctrl+,` on Windows/Linux).
+3. Search for `vscode-extra.geminiApiKey`.
+4. Paste your Gemini API key into the field.
+5. Open the "VS Extra" sidebar (activity bar on the left) and start chatting!
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+This extension contributes the following setting:
 
-For example:
+* `vscode-extra.geminiApiKey` — Your Google Gemini API key (string, default: empty). Required for the AI assistant to function.
 
-This extension contributes the following settings:
+## Usage
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. Click the "VS Extra" icon in the activity bar (left sidebar).
+2. Type your question or prompt in the input field.
+3. Click "Send" or press Enter.
+4. Wait for the AI response to appear below.
+5. Click the "⚙️ Settings" button at the top-right to manage your API key.
+
+### Example Prompts
+
+- "Explain async/await in JavaScript"
+- "Write a React component for a todo list"
+- "Debug this error: [paste error message]"
+- "Best practices for TypeScript"
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- **No API key error** — If you see "Gemini API key not configured", add your key in Settings.
+- **Network errors** — If requests fail, check your internet connection and API key validity.
+- **Rate limiting** — Google Gemini API has usage limits; see [their documentation](https://ai.google.dev/docs) for details.
+
+## Architecture
+
+- **Extension Host** — Handles API key retrieval and Gemini API calls.
+- **Webview** — Sidebar UI (no frameworks, vanilla HTML/CSS/JS).
+- **Message Passing** — Secure communication between webview and extension host via `postMessage`.
+
+## Development
+
+### Build
+
+```bash
+npm install
+npm run compile
+```
+
+### Watch Mode
+
+```bash
+npm run watch
+```
+
+### Run in Extension Development Host
+
+Press `F5` in VS Code to launch the development environment, or run:
+
+```bash
+npm run watch
+# Then F5
+```
+
+### Test
+
+```bash
+npm run compile-tests
+npm test
+```
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
+Initial release with:
+- Sidebar AI chat powered by Gemini 2.5 Flash
+- API key configuration via VS Code settings
+- Settings panel button for quick access
+- Error handling for missing/invalid API keys
 
-Initial release of ...
+## Contributing
 
-### 1.0.1
+Contributions welcome! Feel free to open issues or submit PRs.
 
-Fixed issue #.
+## License
 
-### 1.1.0
-
-Added features X, Y, and Z.
+MIT (or your preferred license)
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**Enjoy coding with AI assistance!**

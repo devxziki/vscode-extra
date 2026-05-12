@@ -38,6 +38,18 @@
         "title": "Hello World"
       }
     ]
+    ,
+    "configuration": {
+      "type": "object",
+      "title": "VS Code Extra",
+      "properties": {
+        "vscode-extra.geminiApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Gemini API key used for VS Code Extra AI assistant."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -65,5 +77,7 @@
   },
   "dependencies": {
     "@vscode/webview-ui-toolkit": "^1.4.0"
+    ,
+    "@google/generative-ai": "^0.2.0"
   }
 }
